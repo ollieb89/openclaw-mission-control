@@ -63,22 +63,16 @@ export function buildCreateBoardInput(overrides?: Partial<CreateBoardInput>): Cr
 
 export interface BoardSnapshotEntity {
   board: BoardEntity;
-  tasks: TaskSnapshotItem[];
+  tasks: unknown[];
   agents: unknown[];
   approvals: unknown[];
   chat_messages: unknown[];
   pending_approvals_count?: number;
 }
 
-interface TaskSnapshotItem {
-  id: string;
-  title: string;
-  [key: string]: unknown;
-}
-
 export function buildBoardSnapshot(
   board: BoardEntity,
-  options?: { tasks?: TaskSnapshotItem[] },
+  options?: { tasks?: unknown[] },
 ): BoardSnapshotEntity {
   return {
     board,
